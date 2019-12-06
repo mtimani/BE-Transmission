@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Dec  4 10:26:06 2019
+# Generated: Fri Dec  6 16:44:15 2019
 ##################################################
 
 
@@ -17,20 +17,21 @@ if __name__ == '__main__':
         except:
             print "Warning: failed to XInitThreads()"
 
-from gnuradio import analog
+from gnuradio import audio
 from gnuradio import blocks
 from gnuradio import eng_notation
 from gnuradio import filter
 from gnuradio import gr
+from gnuradio import uhd
 from gnuradio import wxgui
 from gnuradio.eng_option import eng_option
 from gnuradio.fft import window
 from gnuradio.filter import firdes
 from gnuradio.wxgui import fftsink2
 from gnuradio.wxgui import forms
-from gnuradio.wxgui import scopesink2
 from grc_gnuradio import wxgui as grc_wxgui
 from optparse import OptionParser
+import time
 import wx
 
 
@@ -52,34 +53,6 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Blocks
         ##################################################
-        self.wxgui_scopesink2_1_0 = scopesink2.scope_sink_f(
-        	self.GetWin(),
-        	title='Scope Plot',
-        	sample_rate=samp_rate,
-        	v_scale=0,
-        	v_offset=0,
-        	t_scale=0,
-        	ac_couple=False,
-        	xy_mode=False,
-        	num_inputs=1,
-        	trig_mode=wxgui.TRIG_MODE_AUTO,
-        	y_axis_label='Counts',
-        )
-        self.Add(self.wxgui_scopesink2_1_0.win)
-        self.wxgui_scopesink2_0 = scopesink2.scope_sink_f(
-        	self.GetWin(),
-        	title='Scope Plot',
-        	sample_rate=samp_rate,
-        	v_scale=0,
-        	v_offset=0,
-        	t_scale=0,
-        	ac_couple=False,
-        	xy_mode=False,
-        	num_inputs=1,
-        	trig_mode=wxgui.TRIG_MODE_AUTO,
-        	y_axis_label='Counts',
-        )
-        self.Add(self.wxgui_scopesink2_0.win)
         self.wxgui_fftsink2_1_0 = fftsink2.fft_sink_f(
         	self.GetWin(),
         	baseband_freq=0,
@@ -87,32 +60,33 @@ class top_block(grc_wxgui.top_block_gui):
         	y_divs=10,
         	ref_level=0,
         	ref_scale=2.0,
-        	sample_rate=samp_rate,
+        	sample_rate=44100,
         	fft_size=1024,
         	fft_rate=15,
         	average=False,
         	avg_alpha=None,
         	title='FFT Plot',
-        	peak_hold=False,
+        	peak_hold=True,
         )
         self.Add(self.wxgui_fftsink2_1_0.win)
-        self.wxgui_fftsink2_0 = fftsink2.fft_sink_f(
-        	self.GetWin(),
-        	baseband_freq=porteuse,
-        	y_per_div=10,
-        	y_divs=10,
-        	ref_level=0,
-        	ref_scale=2.0,
-        	sample_rate=samp_rate,
-        	fft_size=1024,
-        	fft_rate=15,
-        	average=False,
-        	avg_alpha=None,
-        	title='FFT Plot',
-        	peak_hold=False,
+        self.uhd_usrp_source_0 = uhd.usrp_source(
+        	",".join(("", "")),
+        	uhd.stream_args(
+        		cpu_format="fc32",
+        		channels=range(1),
+        	),
         )
-        self.Add(self.wxgui_fftsink2_0.win)
-        self.low_pass_filter_0_0 = filter.fir_filter_fff(1, firdes.low_pass(
+        self.uhd_usrp_source_0.set_samp_rate(samp_rate)
+        self.uhd_usrp_source_0.set_center_freq(porteuse, 0)
+        self.uhd_usrp_source_0.set_gain(60, 0)
+        self.uhd_usrp_source_0.set_antenna('TX/RX', 0)
+        self.rational_resampler_xxx_0 = filter.rational_resampler_fff(
+                interpolation=44100,
+                decimation=1500000,
+                taps=None,
+                fractional_bw=None,
+        )
+        self.low_pass_filter_0_0 = filter.fir_filter_ccf(1, firdes.low_pass(
         	1, samp_rate, 20000, 2000, firdes.WIN_HAMMING, 6.76))
         _gain_sizer = wx.BoxSizer(wx.VERTICAL)
         self._gain_text_box = forms.text_box(
@@ -137,52 +111,40 @@ class top_block(grc_wxgui.top_block_gui):
         	proportion=1,
         )
         self.Add(_gain_sizer)
-        self.dc_blocker_xx_0 = filter.dc_blocker_ff(32, True)
-        self.blocks_multiply_xx_0 = blocks.multiply_vff(1)
-        self.blocks_abs_xx_0 = blocks.abs_ff(1)
-        self.analog_sig_source_x_1 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, signal, 1, 2)
-        self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, porteuse, 1, 0)
+        self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vff((1, ))
+        self.blocks_complex_to_mag_0 = blocks.complex_to_mag(1)
+        self.audio_sink_0 = audio.sink(44100, '', True)
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_sig_source_x_0, 0), (self.blocks_multiply_xx_0, 0))
-        self.connect((self.analog_sig_source_x_1, 0), (self.blocks_multiply_xx_0, 1))
-        self.connect((self.blocks_abs_xx_0, 0), (self.low_pass_filter_0_0, 0))
-        self.connect((self.blocks_multiply_xx_0, 0), (self.blocks_abs_xx_0, 0))
-        self.connect((self.blocks_multiply_xx_0, 0), (self.wxgui_fftsink2_0, 0))
-        self.connect((self.blocks_multiply_xx_0, 0), (self.wxgui_scopesink2_0, 0))
-        self.connect((self.dc_blocker_xx_0, 0), (self.wxgui_fftsink2_1_0, 0))
-        self.connect((self.dc_blocker_xx_0, 0), (self.wxgui_scopesink2_1_0, 0))
-        self.connect((self.low_pass_filter_0_0, 0), (self.dc_blocker_xx_0, 0))
+        self.connect((self.blocks_complex_to_mag_0, 0), (self.blocks_multiply_const_vxx_0, 0))
+        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.rational_resampler_xxx_0, 0))
+        self.connect((self.low_pass_filter_0_0, 0), (self.blocks_complex_to_mag_0, 0))
+        self.connect((self.rational_resampler_xxx_0, 0), (self.audio_sink_0, 0))
+        self.connect((self.rational_resampler_xxx_0, 0), (self.wxgui_fftsink2_1_0, 0))
+        self.connect((self.uhd_usrp_source_0, 0), (self.low_pass_filter_0_0, 0))
 
     def get_signal(self):
         return self.signal
 
     def set_signal(self, signal):
         self.signal = signal
-        self.analog_sig_source_x_1.set_frequency(self.signal)
 
     def get_samp_rate(self):
         return self.samp_rate
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.wxgui_scopesink2_1_0.set_sample_rate(self.samp_rate)
-        self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
-        self.wxgui_fftsink2_1_0.set_sample_rate(self.samp_rate)
-        self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
+        self.uhd_usrp_source_0.set_samp_rate(self.samp_rate)
         self.low_pass_filter_0_0.set_taps(firdes.low_pass(1, self.samp_rate, 20000, 2000, firdes.WIN_HAMMING, 6.76))
-        self.analog_sig_source_x_1.set_sampling_freq(self.samp_rate)
-        self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
 
     def get_porteuse(self):
         return self.porteuse
 
     def set_porteuse(self, porteuse):
         self.porteuse = porteuse
-        self.wxgui_fftsink2_0.set_baseband_freq(self.porteuse)
-        self.analog_sig_source_x_0.set_frequency(self.porteuse)
+        self.uhd_usrp_source_0.set_center_freq(self.porteuse, 0)
 
     def get_gain(self):
         return self.gain
