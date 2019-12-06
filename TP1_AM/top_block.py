@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Dec  6 16:44:15 2019
+# Generated: Fri Dec  6 18:02:55 2019
 ##################################################
 
 
@@ -47,7 +47,7 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         self.signal = signal = 10000
         self.samp_rate = samp_rate = 1500000
-        self.porteuse = porteuse = 868e6
+        self.porteuse = porteuse = 869e6
         self.gain = gain = 80
 
         ##################################################
@@ -78,7 +78,7 @@ class top_block(grc_wxgui.top_block_gui):
         )
         self.uhd_usrp_source_0.set_samp_rate(samp_rate)
         self.uhd_usrp_source_0.set_center_freq(porteuse, 0)
-        self.uhd_usrp_source_0.set_gain(60, 0)
+        self.uhd_usrp_source_0.set_gain(40, 0)
         self.uhd_usrp_source_0.set_antenna('TX/RX', 0)
         self.rational_resampler_xxx_0 = filter.rational_resampler_fff(
                 interpolation=44100,
@@ -88,6 +88,8 @@ class top_block(grc_wxgui.top_block_gui):
         )
         self.low_pass_filter_0_0 = filter.fir_filter_ccf(1, firdes.low_pass(
         	1, samp_rate, 20000, 2000, firdes.WIN_HAMMING, 6.76))
+        self.high_pass_filter_0 = filter.fir_filter_ccf(1, firdes.high_pass(
+        	1, samp_rate, 50, 2000, firdes.WIN_HAMMING, 6.76))
         _gain_sizer = wx.BoxSizer(wx.VERTICAL)
         self._gain_text_box = forms.text_box(
         	parent=self.GetWin(),
@@ -120,7 +122,8 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         self.connect((self.blocks_complex_to_mag_0, 0), (self.blocks_multiply_const_vxx_0, 0))
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.rational_resampler_xxx_0, 0))
-        self.connect((self.low_pass_filter_0_0, 0), (self.blocks_complex_to_mag_0, 0))
+        self.connect((self.high_pass_filter_0, 0), (self.blocks_complex_to_mag_0, 0))
+        self.connect((self.low_pass_filter_0_0, 0), (self.high_pass_filter_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.audio_sink_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.wxgui_fftsink2_1_0, 0))
         self.connect((self.uhd_usrp_source_0, 0), (self.low_pass_filter_0_0, 0))
@@ -138,6 +141,7 @@ class top_block(grc_wxgui.top_block_gui):
         self.samp_rate = samp_rate
         self.uhd_usrp_source_0.set_samp_rate(self.samp_rate)
         self.low_pass_filter_0_0.set_taps(firdes.low_pass(1, self.samp_rate, 20000, 2000, firdes.WIN_HAMMING, 6.76))
+        self.high_pass_filter_0.set_taps(firdes.high_pass(1, self.samp_rate, 50, 2000, firdes.WIN_HAMMING, 6.76))
 
     def get_porteuse(self):
         return self.porteuse
