@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Dec 20 10:18:30 2019
+# Generated: Fri Dec 20 10:40:00 2019
 ##################################################
 
 from distutils.version import StrictVersion
@@ -191,6 +191,7 @@ class top_block(gr.top_block, Qt.QWidget):
         	1, samp_rate, 100e3, 10e3, firdes.WIN_HAMMING, 6.76))
         self.blocks_sub_xx_0 = blocks.sub_ff(1)
         self.blocks_multiply_xx_0 = blocks.multiply_vff(1)
+        self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vff((2, ))
         self.blocks_add_xx_0 = blocks.add_vff(1)
         self.audio_sink_1 = audio.sink(44100, '', True)
         self.analog_wfm_rcv_0 = analog.wfm_rcv(
@@ -208,13 +209,14 @@ class top_block(gr.top_block, Qt.QWidget):
         self.connect((self.analog_wfm_rcv_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.analog_wfm_rcv_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.blocks_add_xx_0, 0), (self.rational_resampler_xxx_0_0, 0))
+        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_add_xx_0, 1))
+        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_sub_xx_0, 1))
         self.connect((self.blocks_multiply_xx_0, 0), (self.low_pass_filter_1_0, 0))
         self.connect((self.blocks_sub_xx_0, 0), (self.rational_resampler_xxx_0_0_0, 0))
         self.connect((self.low_pass_filter_0, 0), (self.analog_wfm_rcv_0, 0))
         self.connect((self.low_pass_filter_1, 0), (self.blocks_add_xx_0, 0))
         self.connect((self.low_pass_filter_1, 0), (self.blocks_sub_xx_0, 0))
-        self.connect((self.low_pass_filter_1_0, 0), (self.blocks_add_xx_0, 1))
-        self.connect((self.low_pass_filter_1_0, 0), (self.blocks_sub_xx_0, 1))
+        self.connect((self.low_pass_filter_1_0, 0), (self.blocks_multiply_const_vxx_0, 0))
         self.connect((self.rational_resampler_xxx_0_0, 0), (self.audio_sink_1, 0))
         self.connect((self.rational_resampler_xxx_0_0_0, 0), (self.audio_sink_1, 1))
         self.connect((self.uhd_usrp_source_0, 0), (self.low_pass_filter_0, 0))
