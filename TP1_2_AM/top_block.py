@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Dec  6 18:12:05 2019
+# Generated: Fri Dec 20 10:17:34 2019
 ##################################################
 
 
@@ -47,7 +47,7 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         self.signal = signal = 10000
         self.samp_rate = samp_rate = 1500000
-        self.porteuse = porteuse = 869e6
+        self.porteuse = porteuse = 118.1e6
         self.gain = gain = 80
 
         ##################################################
