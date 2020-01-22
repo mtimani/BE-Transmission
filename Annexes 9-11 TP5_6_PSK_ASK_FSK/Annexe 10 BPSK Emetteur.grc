@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <?grc format='1' created='3.7.11'?>
 <flow_graph>
-  <timestamp>Wed Dec  4 08:05:51 2019</timestamp>
+  <timestamp>Tue Jan 14 16:00:07 2020</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -38,7 +38,7 @@
     </param>
     <param>
       <key>generate_options</key>
-      <value>wx_gui</value>
+      <value>qt_gui</value>
     </param>
     <param>
       <key>hier_block_src_path</key>
@@ -93,93 +93,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(7, 379)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>freq</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>868e6</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_slider</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>converver</key>
-      <value>float_converter</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>80</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(7, 235)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>gain</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value></value>
-    </param>
-    <param>
-      <key>max</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>min</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>num_steps</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>style</key>
-      <value>wx.SL_HORIZONTAL</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(8, 160)</value>
+      <value>(7, 75)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -191,34 +105,144 @@
     </param>
     <param>
       <key>value</key>
-      <value>1500000</value>
+      <value>32000</value>
     </param>
   </block>
   <block>
-    <key>uhd_usrp_source</key>
+    <key>blocks_wavfile_source</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>/home/timani/Bureau/CODE/4A/BE Transmission/Media/banana.wav</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(111, 75)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_wavfile_source_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>nchan</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>repeat</key>
+      <value>True</value>
+    </param>
+  </block>
+  <block>
+    <key>digital_psk_mod</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>differential</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>excess_bw</key>
+      <value>0.35</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(543, 51)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>mod_code</key>
+      <value>"gray"</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>digital_psk_mod_0</value>
+    </param>
+    <param>
+      <key>log</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>constellation_points</key>
+      <value>8</value>
+    </param>
+    <param>
+      <key>samples_per_symbol</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>verbose</key>
+      <value>False</value>
+    </param>
+  </block>
+  <block>
+    <key>uhd_usrp_sink</key>
     <param>
       <key>alias</key>
       <value></value>
     </param>
     <param>
       <key>ant0</key>
-      <value>TX/RX</value>
+      <value></value>
     </param>
     <param>
       <key>bw0</key>
-      <value>0</value>
+      <value>100000</value>
     </param>
     <param>
       <key>center_freq0</key>
-      <value>freq</value>
-    </param>
-    <param>
-      <key>dc_offs_enb0</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb0</key>
-      <value>""</value>
+      <value>867000000</value>
     </param>
     <param>
       <key>norm_gain0</key>
@@ -226,15 +250,7 @@
     </param>
     <param>
       <key>gain0</key>
-      <value>gain</value>
-    </param>
-    <param>
-      <key>lo_export0</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source0</key>
-      <value>internal</value>
+      <value>100</value>
     </param>
     <param>
       <key>ant10</key>
@@ -249,28 +265,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb10</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb10</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain10</key>
       <value>False</value>
     </param>
     <param>
       <key>gain10</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export10</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source10</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant11</key>
@@ -285,28 +285,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb11</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb11</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain11</key>
       <value>False</value>
     </param>
     <param>
       <key>gain11</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export11</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source11</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant12</key>
@@ -321,28 +305,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb12</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb12</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain12</key>
       <value>False</value>
     </param>
     <param>
       <key>gain12</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export12</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source12</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant13</key>
@@ -357,28 +325,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb13</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb13</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain13</key>
       <value>False</value>
     </param>
     <param>
       <key>gain13</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export13</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source13</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant14</key>
@@ -393,28 +345,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb14</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb14</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain14</key>
       <value>False</value>
     </param>
     <param>
       <key>gain14</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export14</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source14</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant15</key>
@@ -429,28 +365,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb15</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb15</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain15</key>
       <value>False</value>
     </param>
     <param>
       <key>gain15</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export15</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source15</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant16</key>
@@ -465,28 +385,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb16</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb16</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain16</key>
       <value>False</value>
     </param>
     <param>
       <key>gain16</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export16</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source16</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant17</key>
@@ -501,28 +405,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb17</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb17</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain17</key>
       <value>False</value>
     </param>
     <param>
       <key>gain17</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export17</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source17</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant18</key>
@@ -537,28 +425,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb18</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb18</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain18</key>
       <value>False</value>
     </param>
     <param>
       <key>gain18</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export18</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source18</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant19</key>
@@ -573,28 +445,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb19</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb19</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain19</key>
       <value>False</value>
     </param>
     <param>
       <key>gain19</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export19</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source19</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant1</key>
@@ -609,28 +465,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb1</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb1</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain1</key>
       <value>False</value>
     </param>
     <param>
       <key>gain1</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export1</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source1</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant20</key>
@@ -645,28 +485,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb20</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb20</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain20</key>
       <value>False</value>
     </param>
     <param>
       <key>gain20</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export20</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source20</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant21</key>
@@ -681,28 +505,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb21</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb21</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain21</key>
       <value>False</value>
     </param>
     <param>
       <key>gain21</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export21</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source21</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant22</key>
@@ -717,28 +525,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb22</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb22</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain22</key>
       <value>False</value>
     </param>
     <param>
       <key>gain22</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export22</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source22</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant23</key>
@@ -753,28 +545,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb23</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb23</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain23</key>
       <value>False</value>
     </param>
     <param>
       <key>gain23</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export23</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source23</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant24</key>
@@ -789,28 +565,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb24</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb24</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain24</key>
       <value>False</value>
     </param>
     <param>
       <key>gain24</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export24</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source24</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant25</key>
@@ -825,28 +585,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb25</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb25</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain25</key>
       <value>False</value>
     </param>
     <param>
       <key>gain25</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export25</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source25</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant26</key>
@@ -861,28 +605,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb26</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb26</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain26</key>
       <value>False</value>
     </param>
     <param>
       <key>gain26</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export26</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source26</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant27</key>
@@ -897,28 +625,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb27</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb27</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain27</key>
       <value>False</value>
     </param>
     <param>
       <key>gain27</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export27</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source27</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant28</key>
@@ -933,28 +645,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb28</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb28</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain28</key>
       <value>False</value>
     </param>
     <param>
       <key>gain28</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export28</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source28</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant29</key>
@@ -969,28 +665,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb29</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb29</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain29</key>
       <value>False</value>
     </param>
     <param>
       <key>gain29</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export29</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source29</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant2</key>
@@ -1005,28 +685,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb2</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb2</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain2</key>
       <value>False</value>
     </param>
     <param>
       <key>gain2</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export2</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source2</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant30</key>
@@ -1041,28 +705,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb30</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb30</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain30</key>
       <value>False</value>
     </param>
     <param>
       <key>gain30</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export30</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source30</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant31</key>
@@ -1077,28 +725,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb31</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb31</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain31</key>
       <value>False</value>
     </param>
     <param>
       <key>gain31</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export31</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source31</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant3</key>
@@ -1113,28 +745,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb3</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb3</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain3</key>
       <value>False</value>
     </param>
     <param>
       <key>gain3</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export3</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source3</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant4</key>
@@ -1149,28 +765,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb4</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb4</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain4</key>
       <value>False</value>
     </param>
     <param>
       <key>gain4</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export4</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source4</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant5</key>
@@ -1185,28 +785,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb5</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb5</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain5</key>
       <value>False</value>
     </param>
     <param>
       <key>gain5</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export5</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source5</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant6</key>
@@ -1221,28 +805,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb6</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb6</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain6</key>
       <value>False</value>
     </param>
     <param>
       <key>gain6</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export6</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source6</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant7</key>
@@ -1257,28 +825,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb7</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb7</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain7</key>
       <value>False</value>
     </param>
     <param>
       <key>gain7</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export7</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source7</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant8</key>
@@ -1293,28 +845,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb8</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb8</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain8</key>
       <value>False</value>
     </param>
     <param>
       <key>gain8</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export8</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source8</key>
-      <value>internal</value>
     </param>
     <param>
       <key>ant9</key>
@@ -1329,28 +865,12 @@
       <value>0</value>
     </param>
     <param>
-      <key>dc_offs_enb9</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>iq_imbal_enb9</key>
-      <value>""</value>
-    </param>
-    <param>
       <key>norm_gain9</key>
       <value>False</value>
     </param>
     <param>
       <key>gain9</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>lo_export9</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>lo_source9</key>
-      <value>internal</value>
     </param>
     <param>
       <key>clock_rate</key>
@@ -1378,7 +898,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(167, 147)</value>
+      <value>(806, 35)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1386,11 +906,11 @@
     </param>
     <param>
       <key>id</key>
-      <value>uhd_usrp_source_0</value>
+      <value>uhd_usrp_sink_0</value>
     </param>
     <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
+      <key>type</key>
+      <value>fc32</value>
     </param>
     <param>
       <key>clock_source0</key>
@@ -1489,10 +1009,6 @@
       <value></value>
     </param>
     <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
       <key>nchan</key>
       <value>1</value>
     </param>
@@ -1501,12 +1017,8 @@
       <value>1</value>
     </param>
     <param>
-      <key>type</key>
-      <value>fc32</value>
-    </param>
-    <param>
       <key>samp_rate</key>
-      <value>samp_rate</value>
+      <value>1500000</value>
     </param>
     <param>
       <key>hide_cmd_port</key>
@@ -1529,24 +1041,16 @@
       <value></value>
     </param>
     <param>
+      <key>len_tag_name</key>
+      <value></value>
+    </param>
+    <param>
       <key>otw</key>
       <value></value>
     </param>
   </block>
   <block>
-    <key>wxgui_fftsink2</key>
-    <param>
-      <key>avg_alpha</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>average</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>baseband_freq</key>
-      <value>freq</value>
-    </param>
+    <key>vocoder_cvsd_encode_fb</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -1564,275 +1068,49 @@
       <value>True</value>
     </param>
     <param>
-      <key>fft_size</key>
-      <value>1024</value>
-    </param>
-    <param>
-      <key>freqvar</key>
-      <value>None</value>
+      <key>bw</key>
+      <value>0.5</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(455, 315)</value>
+      <value>(335, 75)</value>
     </param>
     <param>
       <key>_rotation</key>
       <value>0</value>
     </param>
     <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
       <key>id</key>
-      <value>wxgui_fftsink2_0</value>
+      <value>vocoder_cvsd_encode_fb_0</value>
     </param>
     <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>peak_hold</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>ref_level</key>
+      <key>maxoutbuf</key>
       <value>0</value>
     </param>
     <param>
-      <key>ref_scale</key>
-      <value>2.0</value>
-    </param>
-    <param>
-      <key>fft_rate</key>
-      <value>15</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>title</key>
-      <value>FFT Plot</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>win_size</key>
-      <value></value>
-    </param>
-    <param>
-      <key>win</key>
-      <value>None</value>
-    </param>
-    <param>
-      <key>y_divs</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>y_per_div</key>
-      <value>10</value>
-    </param>
-  </block>
-  <block>
-    <key>wxgui_scopesink2</key>
-    <param>
-      <key>ac_couple</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(455, 563)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
+      <key>minoutbuf</key>
       <value>0</value>
     </param>
     <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>wxgui_scopesink2_0</value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>t_scale</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>title</key>
-      <value>Scope Plot</value>
-    </param>
-    <param>
-      <key>trig_mode</key>
-      <value>wxgui.TRIG_MODE_AUTO</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>v_offset</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>v_scale</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>win_size</key>
-      <value></value>
-    </param>
-    <param>
-      <key>xy_mode</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>y_axis_label</key>
-      <value>Counts</value>
-    </param>
-  </block>
-  <block>
-    <key>wxgui_waterfallsink2</key>
-    <param>
-      <key>avg_alpha</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>average</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>baseband_freq</key>
-      <value>freq</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>dynamic_range</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>fft_rate</key>
-      <value>15</value>
-    </param>
-    <param>
-      <key>fft_size</key>
-      <value>512</value>
-    </param>
-    <param>
-      <key>freqvar</key>
-      <value>None</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(455, 99)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>wxgui_waterfallsink2_0</value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>ref_scale</key>
-      <value>2.0</value>
-    </param>
-    <param>
-      <key>ref_level</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>title</key>
-      <value>Waterfall Plot</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>win_size</key>
-      <value></value>
-    </param>
-    <param>
-      <key>win</key>
-      <value>None</value>
+      <key>resample</key>
+      <value>8</value>
     </param>
   </block>
   <connection>
-    <source_block_id>uhd_usrp_source_0</source_block_id>
-    <sink_block_id>wxgui_fftsink2_0</sink_block_id>
+    <source_block_id>blocks_wavfile_source_0</source_block_id>
+    <sink_block_id>vocoder_cvsd_encode_fb_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>uhd_usrp_source_0</source_block_id>
-    <sink_block_id>wxgui_scopesink2_0</sink_block_id>
+    <source_block_id>digital_psk_mod_0</source_block_id>
+    <sink_block_id>uhd_usrp_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>uhd_usrp_source_0</source_block_id>
-    <sink_block_id>wxgui_waterfallsink2_0</sink_block_id>
+    <source_block_id>vocoder_cvsd_encode_fb_0</source_block_id>
+    <sink_block_id>digital_psk_mod_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Mon Jan  6 10:39:48 2020
+# Generated: Wed Jan 22 14:12:19 2020
 ##################################################
 
 from distutils.version import StrictVersion
@@ -86,8 +86,9 @@ class top_block(gr.top_block, Qt.QWidget):
         )
         self.uhd_usrp_source_0.set_samp_rate(1.5e6)
         self.uhd_usrp_source_0.set_center_freq(867000000, 0)
-        self.uhd_usrp_source_0.set_gain(40, 0)
+        self.uhd_usrp_source_0.set_gain(80, 0)
         self.uhd_usrp_source_0.set_antenna('TX/RX', 0)
+        self.uhd_usrp_source_0.set_bandwidth(100e3, 0)
         self.rational_resampler_xxx_0 = filter.rational_resampler_fff(
                 interpolation=1,
                 decimation=8,
@@ -95,7 +96,7 @@ class top_block(gr.top_block, Qt.QWidget):
                 fractional_bw=None,
         )
         self.qtgui_const_sink_x_0 = qtgui.const_sink_c(
-        	1024, #size
+        	512, #size
         	"", #name
         	1 #number of inputs
         )
@@ -103,7 +104,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.qtgui_const_sink_x_0.set_y_axis(-2, 2)
         self.qtgui_const_sink_x_0.set_x_axis(-2, 2)
         self.qtgui_const_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, "")
-        self.qtgui_const_sink_x_0.enable_autoscale(True)
+        self.qtgui_const_sink_x_0.enable_autoscale(False)
         self.qtgui_const_sink_x_0.enable_grid(False)
         self.qtgui_const_sink_x_0.enable_axis_labels(True)
 
@@ -136,12 +137,12 @@ class top_block(gr.top_block, Qt.QWidget):
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_const_sink_x_0_win)
         self.low_pass_filter_0_0 = filter.fir_filter_ccf(1, firdes.low_pass(
-        	1, 1500000, 20000, 2000, firdes.WIN_HAMMING, 6.76))
+        	1, 1500000, 352800, 2000, firdes.WIN_HAMMING, 6.76))
         self.digital_psk_demod_0 = digital.psk.psk_demod(
-          constellation_points=2,
+          constellation_points=8,
           differential=True,
-          samples_per_symbol=8,
-          excess_bw=0.35,
+          samples_per_symbol=2,
+          excess_bw=0.500,
           phase_bw=6.28/100.0,
           timing_bw=6.28/100.0,
           mod_code="gray",

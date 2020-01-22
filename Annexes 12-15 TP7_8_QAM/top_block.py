@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Jan 10 11:32:33 2020
+# Generated: Wed Jan 22 15:14:00 2020
 ##################################################
 
 from distutils.version import StrictVersion
@@ -80,8 +80,8 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
-        self.vocoder_cvsd_encode_fb_0 = vocoder.cvsd_encode_fb(8,0.5)
-        self.vocoder_cvsd_decode_bf_0_0 = vocoder.cvsd_decode_bf(8,0.5)
+        self.vocoder_cvsd_encode_fb_0 = vocoder.cvsd_encode_fb(2,0.2)
+        self.vocoder_cvsd_decode_bf_0_0 = vocoder.cvsd_decode_bf(2,0.5)
         self.rational_resampler_xxx_0 = filter.rational_resampler_fff(
                 interpolation=1,
                 decimation=8,
@@ -129,16 +129,25 @@ class top_block(gr.top_block, Qt.QWidget):
 
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_const_sink_x_0_win)
+        self.digital_dxpsk_demod_0 = digital.dqpsk_demod(
+        	samples_per_symbol=4,
+        	excess_bw=0.35,
+        	freq_bw=6.28/100.0,
+        	phase_bw=6.28/100.0,
+        	timing_bw=6.28/100.0,
+        	mod_code="gray",
+        	verbose=False,
+        	log=False
+        )
         self.digital_constellation_modulator_0 = digital.generic_mod(
           constellation=const1,
           differential=True,
-          samples_per_symbol=2,
+          samples_per_symbol=4,
           pre_diff_code=True,
           excess_bw=0.35,
           verbose=False,
           log=False,
           )
-        self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(const1)
         self.blocks_wavfile_source_0 = blocks.wavfile_source('/home/timani/Bureau/CODE/4A/BE Transmission/Media/banana.wav', True)
         self.audio_sink_0 = audio.sink(44100, '', True)
 
@@ -146,9 +155,9 @@ class top_block(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.blocks_wavfile_source_0, 0), (self.vocoder_cvsd_encode_fb_0, 0))
-        self.connect((self.digital_constellation_decoder_cb_0, 0), (self.vocoder_cvsd_decode_bf_0_0, 0))
-        self.connect((self.digital_constellation_modulator_0, 0), (self.digital_constellation_decoder_cb_0, 0))
+        self.connect((self.digital_constellation_modulator_0, 0), (self.digital_dxpsk_demod_0, 0))
         self.connect((self.digital_constellation_modulator_0, 0), (self.qtgui_const_sink_x_0, 0))
+        self.connect((self.digital_dxpsk_demod_0, 0), (self.vocoder_cvsd_decode_bf_0_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.audio_sink_0, 0))
         self.connect((self.vocoder_cvsd_decode_bf_0_0, 0), (self.rational_resampler_xxx_0, 0))
         self.connect((self.vocoder_cvsd_encode_fb_0, 0), (self.digital_constellation_modulator_0, 0))

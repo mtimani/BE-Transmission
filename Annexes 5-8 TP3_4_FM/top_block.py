@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Dec 20 16:36:16 2019
+# Generated: Wed Jan 22 11:12:00 2020
 ##################################################
 
 from distutils.version import StrictVersion
@@ -185,8 +185,6 @@ class top_block(gr.top_block, Qt.QWidget):
         self.top_layout.addWidget(self._qtgui_freq_sink_x_0_win)
         self.low_pass_filter_1_0 = filter.fir_filter_fff(1, firdes.low_pass(
         	1, samp_rate/6, 15e3, 1.5e3, firdes.WIN_HAMMING, 6.76))
-        self.low_pass_filter_1 = filter.fir_filter_fff(1, firdes.low_pass(
-        	1, samp_rate/6, 15e3, 1.5e3, firdes.WIN_HAMMING, 6.76))
         self.low_pass_filter_0 = filter.fir_filter_ccf(6, firdes.low_pass(
         	1, samp_rate, 100e3, 10e3, firdes.WIN_HAMMING, 6.76))
         self.blocks_sub_xx_0 = blocks.sub_ff(1)
@@ -204,8 +202,9 @@ class top_block(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.analog_sig_source_x_0, 0), (self.blocks_multiply_xx_0, 1))
+        self.connect((self.analog_wfm_rcv_0, 0), (self.blocks_add_xx_0, 0))
         self.connect((self.analog_wfm_rcv_0, 0), (self.blocks_multiply_xx_0, 0))
-        self.connect((self.analog_wfm_rcv_0, 0), (self.low_pass_filter_1, 0))
+        self.connect((self.analog_wfm_rcv_0, 0), (self.blocks_sub_xx_0, 0))
         self.connect((self.analog_wfm_rcv_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.analog_wfm_rcv_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.blocks_add_xx_0, 0), (self.rational_resampler_xxx_0_0, 0))
@@ -214,8 +213,6 @@ class top_block(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_multiply_xx_0, 0), (self.low_pass_filter_1_0, 0))
         self.connect((self.blocks_sub_xx_0, 0), (self.rational_resampler_xxx_0_0_0, 0))
         self.connect((self.low_pass_filter_0, 0), (self.analog_wfm_rcv_0, 0))
-        self.connect((self.low_pass_filter_1, 0), (self.blocks_add_xx_0, 0))
-        self.connect((self.low_pass_filter_1, 0), (self.blocks_sub_xx_0, 0))
         self.connect((self.low_pass_filter_1_0, 0), (self.blocks_multiply_const_vxx_0, 0))
         self.connect((self.rational_resampler_xxx_0_0, 0), (self.audio_sink_1, 0))
         self.connect((self.rational_resampler_xxx_0_0_0, 0), (self.audio_sink_1, 1))
@@ -241,7 +238,6 @@ class top_block(gr.top_block, Qt.QWidget):
         self.qtgui_waterfall_sink_x_0.set_frequency_range(0, self.samp_rate/6)
         self.qtgui_freq_sink_x_0.set_frequency_range(0, self.samp_rate/6)
         self.low_pass_filter_1_0.set_taps(firdes.low_pass(1, self.samp_rate/6, 15e3, 1.5e3, firdes.WIN_HAMMING, 6.76))
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.samp_rate/6, 15e3, 1.5e3, firdes.WIN_HAMMING, 6.76))
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 100e3, 10e3, firdes.WIN_HAMMING, 6.76))
         self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate/6)
 
